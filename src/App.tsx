@@ -1,6 +1,14 @@
-import "./App.css"
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import AdminPage from "./pages/AdminPage";
 function App() {
-  return <div className="text-green-500">Elogs</div>;
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/admin" element={<AdminPage />} />
+    </Routes>
+  );
 }
 
 export default App;
