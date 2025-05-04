@@ -1,17 +1,42 @@
 import { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
+const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      [{ color: [] }, { background: [] }],
+      ["link", "image", "video"],
+      ["clean"], // remove formatting button
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold", "italic", "underline", "strike", "blockquote", "code-block",
+    "list", "bullet", "indent",
+    "link", "image", "video",
+    "color", "background",
+  ];
 
 const EntryForm = () => {
   const [formValues, setFormValues] = useState({
     title: "",
     piece: "",
   });
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     console.log(name, value);
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handlePieceChange = (value: string) => {
+    setFormValues((prev) => ({ ...prev, piece: value }));
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -69,14 +94,7 @@ const EntryForm = () => {
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="piece">Piece</label>
-        <textarea
-          rows={20}
-          cols={100}
-          className="bg-secondary p-2 outline-none rounded-md"
-          name="piece"
-          value={formValues.piece}
-          onChange={handleChange}
-        ></textarea>
+        <ReactQuill theme="snow" value={formValues.piece} onChange={handlePieceChange} modules={modules} formats={formats} />
       </div>
       <button
         type="submit"
