@@ -1,31 +1,42 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { user, loading } = useAuth();
   const [formValues, setFormValues] = useState({ email: "", password: "" });
+
+  useEffect(() => {
+    if (!loading && user) {
+      navigate(user.email === "elooghenejoy@gmail.com" ? "/admin" : "/");
+    }
+  }, [user, loading]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
-    console.log(formValues);
   };
+
   const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         formValues.email,
         formValues.password
       );
-      navigate("/admin");
-      console.log("Login as", userCredential.user);
     } catch (error: any) {
       console.log(error.code, error.message);
     }
   };
+
+  if (loading || user) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-secondary">
       <form className="bg-primary p-5 rounded" onSubmit={loginUser}>
