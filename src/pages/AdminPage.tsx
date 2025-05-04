@@ -1,8 +1,9 @@
+import EntryForm from "../components/EntryForm"
 
 
 const AdminPage = () => {
   return (
-    <div>AdminPage</div>
+    <div className=""><EntryForm /></div>
   )
 }
 
