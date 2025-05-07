@@ -20,8 +20,8 @@ Tasks (Deadline: Saturday)
   Components
    - Sidebar ✅
    - Blog's body (add 3 demo blog) ✅
-   - About Page
-   - Details Page
+   - About Page ✅
+   - Details Page ✅
 - Loading States
 - Error Handling
 - Code review and cleaning

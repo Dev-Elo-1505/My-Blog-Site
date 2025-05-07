@@ -2,7 +2,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../utils/firebase";
-import { EntriesProp } from "./HomePage";
+import { EntriesProp } from "../components/Body";
+import Sidebar from "../components/Sidebar";
 
 const PostDetailsPage = () => {
   const { postId } = useParams();
@@ -43,15 +44,28 @@ const PostDetailsPage = () => {
     return <p>Error: {error.message}</p>;
   }
   return (
-    <div>
-      {Entry && (
-        <div>
-          <div>{Entry.author}</div>
-          <div>{Entry.date}</div>
-          <div>{Entry.title}</div>
-          <p dangerouslySetInnerHTML={{ __html: Entry.piece }} />
-        </div>
-      )}
+    <div className="flex flex-col md:flex-row min-h-screen">
+      <Sidebar />
+      <div className="p-5 text-text bg-primary">
+        {Entry && (
+          <div>
+            <p>
+              <span className="text-text-secondary uppercase ">
+                {Entry.date}
+              </span>
+              <span className="italic font-light"> by </span>
+              <span className="text-text-secondary uppercase ">
+                {Entry.author}
+              </span>
+            </p>
+            <h1 className="text-5xl font-semibold mb-5">{Entry.title}</h1>
+            <p
+              dangerouslySetInnerHTML={{ __html: Entry.piece }}
+              className="text-lg"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -5,9 +5,9 @@ const Sidebar = () => {
   return (
     <div className="bg-secondary p-5 w-full flex flex-col justify-between gap-14 text-text md:w-1/4 md:min-h-screen">
       <div>
-        <h1 className="text-6xl font-semibold md:text-3xl">
+        <Link to='/' className="text-6xl font-semibold md:text-3xl">
           THE WORLD ACCORDING TO ELO
-        </h1>
+        </Link>
         <p className="font-light text-sm italic">
           Because overthinking deserves a stage...
         </p>
