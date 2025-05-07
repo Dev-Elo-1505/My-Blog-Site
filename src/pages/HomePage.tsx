@@ -2,6 +2,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Body from "../components/Body";
 
 export interface EntriesProp {
   id: string;
@@ -45,18 +47,11 @@ const HomePage = () => {
     return <div>Error: {error.message}</div>;
   }
   return (
-    <div>
-      <h1>Entries</h1>
-
-      {entries.map((entry) => (
-        <Link to={`/post/${entry.id}`} key={entry.id}>
-          <h2>{entry.title}</h2>
-          <p dangerouslySetInnerHTML={{ __html: entry.piece }} />
-          <p>{entry.date}</p>
-          <p>{entry.author}</p>
-        </Link>
-      ))}
+    <div className="flex flex-col md:flex-row min-h-screen">
+      <Sidebar />
+      <Body />
     </div>
+      
   );
 };
 

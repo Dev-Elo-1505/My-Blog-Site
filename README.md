@@ -9,3 +9,22 @@
  3. create form entry
  4. search for markdown or editor library
  5. publish post and save post in firestore
+
+
+
+Tasks (Deadline: Saturday)
+- Change Firebase project
+- setup firebase storage
+- Build ui/ux (show recent five, with load more button)
+  Components
+   - Sidebar
+   - Blog's body (add 3 demo blog)
+   - About Page
+   - Details Page
+- Loading States
+- Error Handling
+- Code review and cleaning
+- Deploy
+- Fix admin private route
+- Add to portfolio
+
