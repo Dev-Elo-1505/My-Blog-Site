@@ -14,11 +14,12 @@
 
 Tasks (Deadline: Saturday)
 - Change Firebase project
+- Modify piece to subtext
 - setup firebase storage
 - Build ui/ux (show recent five, with load more button)
   Components
-   - Sidebar
-   - Blog's body (add 3 demo blog)
+   - Sidebar ✅
+   - Blog's body (add 3 demo blog) ✅
    - About Page
    - Details Page
 - Loading States
