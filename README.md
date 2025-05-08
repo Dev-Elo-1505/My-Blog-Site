@@ -14,7 +14,7 @@
 
 Tasks (Deadline: Saturday)
 - Change Firebase project
-- Modify piece to subtext
+- Modify piece to subtext ✅
 - setup firebase storage
 - Build ui/ux (show recent five, with load more button)
   Components
@@ -22,8 +22,8 @@ Tasks (Deadline: Saturday)
    - Blog's body (add 3 demo blog) ✅
    - About Page ✅
    - Details Page ✅
-- Loading States
-- Error Handling
+- Loading States: add spinners
+- Error Handling: add 404 page
 - Code review and cleaning
 - Deploy
 - Fix admin private route

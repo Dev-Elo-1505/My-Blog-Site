@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <div className="bg-secondary p-5 w-full flex flex-col gap-14 text-text md:w-1/4 md:min-h-screen md:gap-32">
       <div>
-        <Link to='/' className="text-6xl font-semibold md:text-3xl">
+        <Link to='/' className="text-5xl font-semibold md:text-3xl">
           THE WORLD ACCORDING TO ELO
         </Link>
         <p className="font-light text-sm italic">

@@ -58,7 +58,7 @@ const PostDetailsPage = () => {
                 {Entry.author}
               </span>
             </p>
-            <h1 className="text-5xl font-semibold mb-2">{Entry.title}</h1>
+            <h1 className="text-4xl font-semibold mb-2">{Entry.title}</h1>
             <p className="italic mb-5 font-light">{Entry.subtext}</p>
             <p
               dangerouslySetInnerHTML={{ __html: Entry.piece }}
