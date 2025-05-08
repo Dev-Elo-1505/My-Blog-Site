@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div className="text-text p-20">Loading...</div>; 
   }
 
   const isAdmin = user && user.email === "elooghenejoy@gmail.com";

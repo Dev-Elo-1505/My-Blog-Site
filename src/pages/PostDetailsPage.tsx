@@ -37,7 +37,7 @@ const PostDetailsPage = () => {
   }, [postId]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="text-text p-20">Loading...</p>;
   }
 
   if (error) {

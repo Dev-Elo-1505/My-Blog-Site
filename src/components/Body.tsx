@@ -44,7 +44,7 @@ const Body = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-text p-20">Loading...</div>;
   }
   if (error) {
     return <div>Error: {error.message}</div>;

@@ -34,7 +34,7 @@ const LoginPage = () => {
   };
 
   if (loading || user) {
-    return <div>Loading...</div>;
+    return <div className="text-text p-20">Loading...</div>;
   }
 
   return (
