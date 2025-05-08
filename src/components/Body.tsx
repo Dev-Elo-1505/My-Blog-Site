@@ -21,13 +21,17 @@ const Body = () => {
     const fetchEntries = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "entries"));
-        const fetchedEntries: EntriesProp[] = querySnapshot.docs.map((doc) => {
-          const data = doc.data() as Omit<EntriesProp, "id">;
-          return {
-            id: doc.id,
-            ...data,
-          };
-        });
+        const fetchedEntries: EntriesProp[] = querySnapshot.docs
+          .map((doc) => {
+            const data = doc.data() as Omit<EntriesProp, "id">;
+            return {
+              id: doc.id,
+              ...data,
+            };
+          })
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
 
         setEntries(fetchedEntries);
         setIsLoading(false);
@@ -37,7 +41,6 @@ const Body = () => {
       }
     };
     fetchEntries();
-    
   }, []);
 
   if (isLoading) {
