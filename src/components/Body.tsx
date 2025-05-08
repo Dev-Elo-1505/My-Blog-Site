@@ -3,7 +3,6 @@ import { db } from "../utils/firebase";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export interface EntriesProp {
   id: string;
   title: string;
@@ -52,7 +51,7 @@ const Body = () => {
   }
 
   return (
-    <section className="p-5 text-text bg-primary md:w-3/4">
+    <section className="p-5 text-text md:w-full bg-primary">
       <h1 className="text-4xl font-bold mb-5">Recent crashes</h1>
 
       <div>
