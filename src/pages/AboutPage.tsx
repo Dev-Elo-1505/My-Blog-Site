@@ -1,10 +1,16 @@
+import { IoArrowBackOutline } from "react-icons/io5";
 import Sidebar from "../components/Sidebar";
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
       <div className="p-5 text-text bg-primary flex flex-col justify-center text-lg md:text-xl">
+      <Link to="/" className="flex items-center mb-5 text-text-secondary">
+          <IoArrowBackOutline className="text-2xl" />
+          <span className="ml-2">Back</span>
+        </Link>
         <h1 className="text-4xl md:text-6xl font-semibold mb-5">About Me</h1>
         <p className="mb-2">Hey, I’m Elo.</p>
 
