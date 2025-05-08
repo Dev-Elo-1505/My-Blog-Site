@@ -3,7 +3,7 @@ import pic from "../assets/about-pic.jpg";
 
 const Sidebar = () => {
   return (
-    <div className="bg-secondary p-5 w-full flex flex-col justify-between gap-14 text-text md:w-1/4 md:min-h-screen">
+    <div className="bg-secondary p-5 w-full flex flex-col gap-14 text-text md:w-1/4 md:min-h-screen md:gap-32">
       <div>
         <Link to='/' className="text-6xl font-semibold md:text-3xl">
           THE WORLD ACCORDING TO ELO

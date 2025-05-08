@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export interface EntriesProp {
   id: string;
   title: string;
+  subtext: string;
   piece: string;
   date: string;
   author: string;
@@ -36,6 +37,7 @@ const Body = () => {
       }
     };
     fetchEntries();
+    
   }, []);
 
   if (isLoading) {
@@ -65,10 +67,7 @@ const Body = () => {
                 </span>
               </p>
               <h2 className="text-3xl font-bold">{entry.title}</h2>
-              <p
-                dangerouslySetInnerHTML={{ __html: entry.piece }}
-                className="text-lg"
-              />
+              <p className="text-lg italic font-light">{entry.subtext}</p>
             </Link>
           </div>
         ))}

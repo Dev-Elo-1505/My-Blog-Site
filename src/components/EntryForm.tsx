@@ -37,6 +37,7 @@ const formats = [
 const EntryForm = () => {
   const [formValues, setFormValues] = useState({
     title: "",
+    subtext: "",
     piece: "",
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,12 +55,13 @@ const EntryForm = () => {
     try {
       const docRef = await addDoc(collection(db, "entries"), {
         title: formValues.title,
+        subtext: formValues.subtext,
         piece: formValues.piece,
         date: getFormattedDate(),
         author: "Elo-oghene",
       });
       console.log("Document written with ID: ", docRef.id);
-      setFormValues({ title: "", piece: "" });
+      setFormValues({ title: "",subtext: "", piece: "" });
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -101,6 +103,18 @@ const EntryForm = () => {
           onChange={handleChange}
           name="title"
           value={formValues.title}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="subtext" className="">
+          Subtext
+        </label>
+        <input
+          type="text"
+          className="bg-secondary p-2 outline-none rounded-md"
+          onChange={handleChange}
+          name="subtext"
+          value={formValues.subtext}
         />
       </div>
       <div>
