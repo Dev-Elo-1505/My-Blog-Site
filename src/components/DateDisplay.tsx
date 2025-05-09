@@ -1,4 +1,4 @@
-// components/DateDisplay.tsx
+
 const DateDisplay = () => {
     const getFormattedDate = () => {
       const now = new Date();

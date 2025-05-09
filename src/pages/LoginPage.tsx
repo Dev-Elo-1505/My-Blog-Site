@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!loading && user) {
-      navigate(user.email === "elooghenejoy@gmail.com" ? "/admin" : "/");
+      navigate(user.email === "elooghenejoy@gmail.com" ? "/elolog" : "/");
     }
   }, [user, loading]);
 
