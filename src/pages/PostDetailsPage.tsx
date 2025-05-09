@@ -1,10 +1,10 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { db } from "../utils/firebase";
 import { EntriesProp } from "../components/Body";
-import Sidebar from "../components/Sidebar";
-import { IoArrowBackOutline } from "react-icons/io5";
+import Layout from "../components/Layout";
+import ContentWrapper from "../components/ContentWrapper";
 
 const PostDetailsPage = () => {
   const { postId } = useParams();
@@ -45,13 +45,8 @@ const PostDetailsPage = () => {
     return <p>Error: {error.message}</p>;
   }
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
-      <Sidebar />
-      <div className="p-5 text-text bg-primary">
-      <Link to="/" className="flex items-center mb-5 text-text-secondary">
-          <IoArrowBackOutline className="text-2xl" />
-          <span className="ml-2">Back</span>
-        </Link>
+    <Layout>
+      <ContentWrapper showBackButton>
         {Entry && (
           <div>
             <p>
@@ -71,8 +66,8 @@ const PostDetailsPage = () => {
             />
           </div>
         )}
-      </div>
-    </div>
+      </ContentWrapper>
+    </Layout>
   );
 };
 

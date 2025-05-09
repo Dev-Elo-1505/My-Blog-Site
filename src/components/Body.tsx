@@ -2,6 +2,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebase";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ContentWrapper from "./ContentWrapper";
 
 export interface EntriesProp {
   id: string;
@@ -51,32 +52,25 @@ const Body = () => {
   }
 
   return (
-    <section className="p-5 text-text md:w-full bg-primary">
-      <h1 className="text-4xl font-bold mb-5">Recent crashes</h1>
-
-      <div>
-        {entries.map((entry) => (
-          <div
-            key={entry.id}
-            className="mb-5 hover:bg-secondary p-5 rounded-lg"
-          >
-            <Link to={`/post/${entry.id}`}>
-              <p>
-                <span className="text-text-secondary uppercase ">
-                  {entry.date}
-                </span>
-                <span className="italic font-light"> by </span>
-                <span className="text-text-secondary uppercase ">
-                  {entry.author}
-                </span>
-              </p>
-              <h2 className="text-3xl font-bold">{entry.title}</h2>
-              <p className="text-lg italic font-light">{entry.subtext}</p>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </section>
+    <ContentWrapper title="Recent Crashes">
+      {entries.map((entry) => (
+        <div key={entry.id} className="mb-5 hover:bg-secondary p-5 rounded-lg">
+          <Link to={`/post/${entry.id}`}>
+            <p>
+              <span className="text-text-secondary uppercase ">
+                {entry.date}
+              </span>
+              <span className="italic font-light"> by </span>
+              <span className="text-text-secondary uppercase ">
+                {entry.author}
+              </span>
+            </p>
+            <h2 className="text-3xl font-bold">{entry.title}</h2>
+            <p className="text-lg italic font-light">{entry.subtext}</p>
+          </Link>
+        </div>
+      ))}
+    </ContentWrapper>
   );
 };
 

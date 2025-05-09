@@ -1,17 +1,10 @@
-import { IoArrowBackOutline } from "react-icons/io5";
-import Sidebar from "../components/Sidebar";
-import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
+import ContentWrapper from "../components/ContentWrapper";
 
 const AboutPage = () => {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
-      <Sidebar />
-      <div className="p-5 text-text bg-primary flex flex-col justify-center text-lg md:text-xl">
-      <Link to="/" className="flex items-center mb-5 text-text-secondary">
-          <IoArrowBackOutline className="text-2xl" />
-          <span className="ml-2">Back</span>
-        </Link>
-        <h1 className="text-4xl md:text-6xl font-semibold mb-5">About Me</h1>
+    <Layout>
+      <ContentWrapper title="About Me" showBackButton>
         <p className="mb-2">Hey, I’m Elo.</p>
 
         <p className="mb-2">
@@ -20,22 +13,20 @@ const AboutPage = () => {
           recovering perfectionist-depending on the day.
         </p>
         <p className="mb-2">
-          <span className="italic">The world according to Elo</span> is exactly what it sounds like: my lens on
-          life, code, faith, mental health, ideas that keep me up at night, and
-          the quiet chaos of figuring things out.
+          <span className="italic">The world according to Elo</span> is exactly
+          what it sounds like: my lens on life, code, faith, mental health,
+          ideas that keep me up at night, and the quiet chaos of figuring things
+          out.
         </p>
 
         <p className="mb-2">
           I love clean UIs, messy growth, and asking questions that don’t have
           one-line answers.
         </p>
-        <p className="mb-2">
-          So welcome. Stay as long as you like. 
-        </p>
-        <p>Because overthinking deserves a
-          stage.</p>
-      </div>
-    </div>
+        <p className="mb-2">So welcome. Stay as long as you like.</p>
+        <p>Because overthinking deserves a stage.</p>
+      </ContentWrapper>
+    </Layout>
   );
 };
 
