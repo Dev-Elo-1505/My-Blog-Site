@@ -1,8 +1,5 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../utils/firebase";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import ContentWrapper from "./ContentWrapper";
+import { useEntries } from "../hooks/useEntries";
+import EntriesList from "./EntriesList";
 
 export interface EntriesProp {
   id: string;
@@ -14,36 +11,8 @@ export interface EntriesProp {
 }
 
 const Body = () => {
-  const [entries, setEntries] = useState<EntriesProp[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    const fetchEntries = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "entries"));
-        const fetchedEntries: EntriesProp[] = querySnapshot.docs
-          .map((doc) => {
-            const data = doc.data() as Omit<EntriesProp, "id">;
-            return {
-              id: doc.id,
-              ...data,
-            };
-          })
-          .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          );
-
-        setEntries(fetchedEntries);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error as Error);
-        setIsLoading(false);
-      }
-    };
-    fetchEntries();
-  }, []);
-
+  const { entries, isLoading, error } = useEntries();
+  
   if (isLoading) {
     return <div className="text-text p-20">Loading...</div>;
   }
@@ -51,27 +20,7 @@ const Body = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  return (
-    <ContentWrapper title="Recent Crashes">
-      {entries.map((entry) => (
-        <div key={entry.id} className="mb-5 hover:bg-secondary p-5 rounded-lg">
-          <Link to={`/post/${entry.id}`}>
-            <p>
-              <span className="text-text-secondary uppercase ">
-                {entry.date}
-              </span>
-              <span className="italic font-light"> by </span>
-              <span className="text-text-secondary uppercase ">
-                {entry.author}
-              </span>
-            </p>
-            <h2 className="text-3xl font-bold">{entry.title}</h2>
-            <p className="text-lg italic font-light">{entry.subtext}</p>
-          </Link>
-        </div>
-      ))}
-    </ContentWrapper>
-  );
+  return <EntriesList entries={entries} />;
 };
 
 export default Body;
